@@ -12,9 +12,10 @@ app.get('/api/restaurants/test', (req, res) => {
 app.get('/api/users/test', (req, res) => {
   res.json({ message: 'User test route works!' });
 });
-
+//Testing routes on postman 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/restaurants', require('./routes/restaurantRoutes'));
+app.use('/api/menu', require('./routes/menuRoutes'));
 
 // 404 handler
 app.use((req, res) => {
