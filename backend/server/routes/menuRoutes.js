@@ -1,26 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {
-  createMenuItem,
-  getMenuByRestaurant,
-  getMenuItemById,
-  updateMenuItem,
-  deleteMenuItem
-} = require('../controllers/menuController');
+const menuController = require('../controllers/menuController');
 
-// CREATE
-router.post('/', createMenuItem);
+// STATIC routes first
+router.post('/create', menuController.createMenuItem);
+router.get('/restaurant/:restaurantId', menuController.getMenuByRestaurant);
+router.put('/:id', menuController.updateMenuItem);
+router.delete('/:id', menuController.deleteMenuItem);
 
-// READ all menu items for a restaurant
-router.get('/restaurant/:restaurantId', getMenuByRestaurant);
-
-// READ one item by ID
-router.get('/:id', getMenuItemById);
-
-// UPDATE
-router.put('/:id', updateMenuItem);
-
-// DELETE
-router.delete('/:id', deleteMenuItem);
+// DYNAMIC route at the end
+router.get('/:id', menuController.getMenuItemById);
 
 module.exports = router;

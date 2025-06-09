@@ -9,8 +9,8 @@ const menuItemSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: String,
   price: { type: Number, required: true },
-  category: { type: String }, // e.g., Starter, Main Course
-  image: String, // (optional) for future upload feature
+  category: String,
+  image: String,
 }, { timestamps: true });
 
 module.exports = mongoose.model('MenuItem', menuItemSchema);
